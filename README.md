@@ -7,4 +7,4 @@ and is marked by spontaneous occurrence of seizures. There is no available relia
 EEG recordings of 7 subjects in the Kaggle’s
 American Epilepsy Seizure Prediction Challenge database, produced an area under the ROC curve (AUC) score of 0.72690. This algorithm can be run on an implantable device and it can predict a seizure with moderate predictive accuracy. 
 
-[Project Report](https://seelio.com/w/1r6c/kaggle-seizure-prediction-challenge-project-report?student=kushankraghav)
+[Project Report](/docs/SeizurePrediction.pdf)
