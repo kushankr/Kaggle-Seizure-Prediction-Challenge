@@ -25,8 +25,6 @@ def extract_test_features(files):
         count = []
         for j in range(i):
             count.append(j)
-        initial = []
-        i = 0
         for item in count:
             initial = dataarray[item]
             initial = np.array(initial)
@@ -44,8 +42,8 @@ def extract_test_features(files):
     return testdata, target
 
 
-def extract_features(files):
-    finaldata = []
+def extract_train_features(files):
+    traindata = []
     target = []
     for file in glob.glob(files):
         if 'preictal' in file:
@@ -68,8 +66,6 @@ def extract_features(files):
         count = []
         for j in range(i):
             count.append(j)
-        initial = []
-        i = 0
         for item in count:
             initial = dataarray[item]
             initial = np.array(initial)
@@ -82,14 +78,14 @@ def extract_features(files):
                 dfappend2.append(np.linalg.eig(np.corrcoef(s1, s2))[0][0])
                 dfappend2.append(np.linalg.eig(np.corrcoef(s1, s2))[0][1])
         dfappend = np.concatenate((dfappend1, dfappend2))
-        finaldata.append(dfappend)
+        traindata.append(dfappend)
         target.append(targetvalue)
-    return finaldata, target
+    return traindata, target
 
 
 folder_list = ["Dog_1", "Dog_2", "Dog_3", "Dog_4", "Dog_5", "Patient_1", "Patient_2"]
 for folder in folder_list:
-    X_train, y_train = extract_features(str(folder) + "\\*.mat")
+    X_train, y_train = extract_train_features(str(folder) + "\\*.mat")
     model = LogisticRegression(penalty='l2', class_weight="auto")
     model.fit(X_train, y_train)
     X_test, filename = extract_test_features(str(folder) + "\\*.mat")
